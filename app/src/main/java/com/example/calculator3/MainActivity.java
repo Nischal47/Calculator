@@ -141,8 +141,7 @@ public class MainActivity extends AppCompatActivity {
                     a = '+';
 
                     cal.setResult(a);
-                    contentData = cal.showData(isOperator, isEqual,isDouble);
-                    content.setText(contentData);
+                    content.setText("+");
                 }
 
             }
@@ -157,8 +156,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     a = '-';
                     cal.setResult(a);
-                    contentData = cal.showData(isOperator, isEqual,isDouble);
-                    content.setText(contentData);
+
+                    content.setText("-");
                 }
             }
         });
@@ -172,8 +171,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     a = '*';
                     cal.setResult(a);
-                    contentData = cal.showData(isOperator, isEqual,isDouble);
-                    content.setText(contentData);
+
+                    content.setText("*");
                 }
             }
         });
@@ -187,8 +186,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     a = '/';
                     cal.setResult(a);
-                    contentData = cal.showData(isOperator, isEqual,isDouble);
-                    content.setText(contentData);
+
+                    content.setText("/");
                 }
             }
         });
