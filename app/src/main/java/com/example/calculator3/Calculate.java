@@ -11,12 +11,14 @@ public class Calculate {
 
     // Setter
     public double setA(String newNumber) {
-
+        String a;
         if (this.a == 0) {
             this.a = Double.parseDouble(newNumber);
             return this.a;
         } else {
-            this.a = 10 * this.a + Double.parseDouble(newNumber);
+            a=Double.toString(this.a);
+            a=a.concat(newNumber);
+            this.a=Double.parseDouble(a);
             return this.a;
         }
     }
@@ -28,12 +30,14 @@ public class Calculate {
 
     // Setter
     public double setB(String newNumber) {
-
+        String b;
         if (this.b == 0) {
             this.b = Double.parseDouble(newNumber);
             return this.b;
         } else {
-            this.b = 10 * this.b + Double.parseDouble(newNumber);
+            b=Double.toString(this.b);
+            b=b.concat(newNumber);
+            this.a=Double.parseDouble(b);
             return this.b;
         }
     }
@@ -94,12 +98,12 @@ public class Calculate {
 
     }
 
-    public String showData(boolean operator, boolean isEqual, boolean isDecimal) {
+    public String showData(boolean operator, boolean isEqual) {
         double a, b, result;
         if (isEqual == false) {
             if (operator == true) {
                 b = getB();
-                if (isDecimal == false) {
+                if (b==Math.floor(b)) {
 
                     return Integer.toString((int) Math.round(b));
                 } else {
@@ -107,7 +111,7 @@ public class Calculate {
                 }
             } else {
                 a = getA();
-                if (isDecimal == false) {
+                if (a==Math.floor(a)) {
 
                     return Integer.toString((int) Math.round(a));
                 } else {
@@ -116,7 +120,7 @@ public class Calculate {
             }
         } else {
             result = getResult();
-            if (isDecimal == false) {
+            if (result == Math.floor(result)) {
 
                 return Integer.toString((int) Math.round(result));
             } else {
