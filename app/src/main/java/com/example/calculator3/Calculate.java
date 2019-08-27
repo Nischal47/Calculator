@@ -10,16 +10,27 @@ public class Calculate {
 
 
     // Setter
-    public double setA(String newNumber) {
+    public double setA(String newNumber,boolean isdecimal) {
         String a;
         if (this.a == 0) {
             this.a = Double.parseDouble(newNumber);
             return this.a;
         } else {
-            a=Double.toString(this.a);
+            if (this.a == Math.floor(this.a) && isdecimal==true) {
+                a = String.format("%.0f", this.a);
+
+
+            } else if(this.a == Math.round(this.a * 10) / 10.0){
+                a =  String.format("%.1f", this.a);
+
+            }else {
+                a = Double.toString(this.a);
+            }
             a=a.concat(newNumber);
             this.a=Double.parseDouble(a);
             return this.a;
+
+
         }
     }
 
@@ -29,16 +40,25 @@ public class Calculate {
     }
 
     // Setter
-    public double setB(String newNumber) {
+    public double setB(String newNumber,boolean isdecimal) {
         String b;
         if (this.b == 0) {
             this.b = Double.parseDouble(newNumber);
             return this.b;
         } else {
-            b=Double.toString(this.b);
+            if (this.b == Math.round(this.b) && isdecimal==true) {
+                b =  String.format("%.0f", this.b);
+
+            } else if(this.b == Math.round(this.b * 10) / 10.0){
+                b = String.format("%.1f", this.a);
+
+            }else {
+                b = Double.toString(this.b);
+            }
             b=b.concat(newNumber);
-            this.a=Double.parseDouble(b);
+            this.b=Double.parseDouble(b);
             return this.b;
+
         }
     }
 
@@ -84,14 +104,14 @@ public class Calculate {
     }
 
 
-    public void readData(String newNumber, boolean operator) {
+    public void readData(String newNumber, boolean operator,boolean isdecimal) {
         if (operator == true) {
 
-            setB(newNumber);
+            setB(newNumber,isdecimal);
 
 
         } else {
-            setA(newNumber);
+            setA(newNumber,isdecimal);
 
 
         }
