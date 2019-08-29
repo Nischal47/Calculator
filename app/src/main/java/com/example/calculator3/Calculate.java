@@ -16,9 +16,16 @@ public class Calculate {
             this.a = Double.parseDouble(newNumber);
             return this.a;
         } else {
-            if (this.a == Math.floor(this.a) && isdecimal==true) {
-                a = String.format("%.0f", this.a);
+            if (this.a == Math.floor(this.a) && isdecimal==false) {
+                a = Integer.toString((int) Math.round(this.a));
+            }
 
+            else if(this.a == Math.floor(this.a) && newNumber=="."){
+
+                return this.a;
+            }
+            else if(this.a == Math.floor(this.a) && isdecimal==true){
+                    a =Integer.toString((int) Math.round(this.a))+'.';
 
             } else if(this.a == Math.round(this.a * 10) / 10.0){
                 a =  String.format("%.1f", this.a);
@@ -26,6 +33,7 @@ public class Calculate {
             }else {
                 a = Double.toString(this.a);
             }
+
             a=a.concat(newNumber);
             this.a=Double.parseDouble(a);
             return this.a;
@@ -46,19 +54,27 @@ public class Calculate {
             this.b = Double.parseDouble(newNumber);
             return this.b;
         } else {
-            if (this.b == Math.round(this.b) && isdecimal==true) {
-                b =  String.format("%.0f", this.b);
+            if (this.b == Math.floor(this.b) && isdecimal==false) {
+                b = Integer.toString((int) Math.round(this.b));
+            }
+
+            else if(this.b == Math.floor(this.b) && newNumber=="."){
+
+                return this.b;
+            }
+            else if(this.b == Math.floor(this.b) && isdecimal==true){
+                b =Integer.toString((int) Math.round(this.b))+'.';
 
             } else if(this.b == Math.round(this.b * 10) / 10.0){
-                b = String.format("%.1f", this.a);
+                b =  String.format("%.1f", this.b);
 
             }else {
                 b = Double.toString(this.b);
             }
+
             b=b.concat(newNumber);
             this.b=Double.parseDouble(b);
             return this.b;
-
         }
     }
 

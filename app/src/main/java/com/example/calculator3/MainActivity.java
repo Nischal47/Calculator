@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean isOperator = false;
     public boolean isEqual = false;
-    public boolean isdecimal=true;
+    public boolean isdecimal=false;
 
     EditText content;
     Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnplus, btnminus, btnmul, btndiv, btnequal, btnC, btndecimal;
@@ -134,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         btnplus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isdecimal=false;
                 if (isOperator == false) {
                     isOperator = true;
                     a = '+';
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity {
         btnminus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isdecimal=false;
                 if (isOperator == false) {
                     isOperator = true;
                     a = '-';
@@ -165,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
         btnmul.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isdecimal=false;
                 if (isOperator == false) {
                     isOperator = true;
                     a = '*';
@@ -180,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
         btndiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                isdecimal=false;
                 if (isOperator == false) {
                     isOperator = true;
                     a = '/';
@@ -197,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 isEqual = true;
                 isOperator = false;
-
+                isdecimal=false;
                 cal.setResult(a);
 
                 contentData = cal.showData(isOperator, isEqual);
@@ -208,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
         btnC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isdecimal=true;
+                isdecimal=false;
                 isOperator=false;
                 isEqual=false;
                 cal.clear();
@@ -220,10 +224,10 @@ public class MainActivity extends AppCompatActivity {
         btndecimal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                isdecimal=true;
+
                 cal.readData(".", isOperator,isdecimal);
                 contentData = cal.showData(isOperator, isEqual)+".";
-                isdecimal=false;
+                isdecimal=true;
                 content.setText(contentData);
             }
         });
