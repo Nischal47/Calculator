@@ -11,11 +11,7 @@ public class Calculate {
 
     // Setter
     public void setA(String newNumber) {
-
-
         this.a = Double.parseDouble(newNumber);
-
-
     }
 
     // Getter
@@ -26,37 +22,22 @@ public class Calculate {
     // Setter
     public void setB(String newNumber) {
         this.b = Double.parseDouble(newNumber);
-
     }
 
 
     public void setResult(char operator) {
-
         switch (operator) {
-
             case '+':
-
                 this.a = getA() + getB();
-
-
                 break;
             case '-':
-
                 this.a = getA() - getB();
-
-
                 break;
             case '*':
-
                 this.a = getA() * getB();
-
-
                 break;
             case '/':
-
                 this.a = getA() / getB();
-
-
                 break;
             default:
                 break;
@@ -70,8 +51,6 @@ public class Calculate {
         } else {
             setB(newNumber);
         }
-
-
     }
 
     public String showData() {
@@ -82,14 +61,11 @@ public class Calculate {
         } else {
             return Double.toString(a);
         }
-
-
     }
 
     public void clear() {
         this.a = 0;
         this.b = 0;
-
     }
 
     public String removeLastChar(String str) {

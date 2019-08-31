@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public boolean isOperator = false;
     public boolean noRespond = false;
-    public  boolean decimal=false;
+    public boolean decimal = false;
 
     public String temp;
     public char operator;
@@ -79,22 +79,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (noRespond == false) {
                     temp = content.getText().toString();
                     if (!temp.isEmpty()) {
-
-
-                        if (Double.parseDouble(temp) != 0 || temp.charAt(temp.length() - 1)=='.') {
+                        if (Double.parseDouble(temp) != 0 || temp.charAt(temp.length() - 1) == '.') {
                             if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
                                 content.setText("0");
                             } else {
                                 content.setText(temp + "0");
                             }
-                        }else{
+                        } else {
                             content.setText("0");
                         }
-                    }else{
+                    } else {
                         content.setText("0");
                     }
-
-
                 }
 
 
@@ -108,8 +104,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         content.setText(temp + "1");
                     }
                 }
-
-
                 break;
 
             case R.id.btn_2:
@@ -121,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         content.setText(temp + "2");
                     }
                 }
-
                 break;
             case R.id.btn_3:
                 if (noRespond == false) {
@@ -132,7 +125,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         content.setText(temp + "3");
                     }
                 }
-
                 break;
             case R.id.btn_4:
                 if (noRespond == false) {
@@ -143,7 +135,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         content.setText(temp + "4");
                     }
                 }
-
                 break;
             case R.id.btn_5:
                 if (noRespond == false) {
@@ -154,7 +145,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         content.setText(temp + "5");
                     }
                 }
-
                 break;
             case R.id.btn_6:
                 if (noRespond == false) {
@@ -165,7 +155,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         content.setText(temp + "6");
                     }
                 }
-
                 break;
             case R.id.btn_7:
                 if (noRespond == false) {
@@ -176,7 +165,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         content.setText(temp + "7");
                     }
                 }
-
                 break;
             case R.id.btn_8:
 
@@ -188,7 +176,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         content.setText(temp + "8");
                     }
                 }
-
                 break;
             case R.id.btn_9:
                 if (noRespond == false) {
@@ -199,7 +186,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         content.setText(temp + "9");
                     }
                 }
-
                 break;
             case R.id.btnAdd:
                 temp = content.getText().toString();
