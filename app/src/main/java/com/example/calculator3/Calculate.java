@@ -1,7 +1,7 @@
 package com.example.calculator3;
 
 public class Calculate {
-    private double a=0, b=0;
+    private double a = 0, b = 0;
 
     // Getter
     public double getA() {
@@ -10,13 +10,10 @@ public class Calculate {
 
 
     // Setter
-    public double setA(String newNumber) {
+    public void setA(String newNumber) {
 
 
-
-            this.a = Double.parseDouble(newNumber);
-            return this.a;
-
+        this.a = Double.parseDouble(newNumber);
 
 
     }
@@ -27,12 +24,10 @@ public class Calculate {
     }
 
     // Setter
-    public double setB(String newNumber) {
+    public void setB(String newNumber) {
         this.b = Double.parseDouble(newNumber);
-        return this.b;
-        }
 
-
+    }
 
 
     public void setResult(char operator) {
@@ -44,28 +39,24 @@ public class Calculate {
                 this.a = getA() + getB();
 
 
-                this.b = 0;
                 break;
             case '-':
 
                 this.a = getA() - getB();
 
 
-                this.b = 0;
                 break;
             case '*':
 
                 this.a = getA() * getB();
 
 
-                this.b = 0;
                 break;
             case '/':
 
                 this.a = getA() / getB();
 
 
-                this.b = 0;
                 break;
             default:
                 break;
@@ -73,11 +64,10 @@ public class Calculate {
     }
 
 
-    public void readData(String newNumber,Boolean isOperator) {
-        if(isOperator==false){
+    public void readData(String newNumber, Boolean isOperator) {
+        if (isOperator == false) {
             setA(newNumber);
-        }
-        else {
+        } else {
             setB(newNumber);
         }
 
@@ -86,13 +76,12 @@ public class Calculate {
 
     public String showData() {
 
-                if (getA() == Math.floor(getA())) {
+        if (getA() == Math.floor(getA())) {
 
-                    return Integer.toString((int) Math.round(a));
-                } else {
-                    return Double.toString(a);
-                }
-
+            return Integer.toString((int) Math.round(a));
+        } else {
+            return Double.toString(a);
+        }
 
 
     }
@@ -102,6 +91,7 @@ public class Calculate {
         this.b = 0;
 
     }
+
     public String removeLastChar(String str) {
         return str.substring(0, str.length() - 1);
     }
