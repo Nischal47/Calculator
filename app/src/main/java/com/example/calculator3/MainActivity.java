@@ -7,18 +7,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public boolean isOperator = false;
-    public boolean isEqual = false;
-    public boolean isdecimal=false;
+
+
+    public String temp;
+    public char operator;
 
     EditText content;
-    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnplus, btnminus, btnmul, btndiv, btnequal, btnC, btndecimal;
+    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnAdd, btnSub, btnMul, btnDiv, btnEqual, btnC, btnDec, btnDel;
     char a;
     String contentData;
 
-    Calculate cal =new Calculate();
+    Calculate cal = new Calculate();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,202 +37,182 @@ public class MainActivity extends AppCompatActivity {
         btn8 = (Button) findViewById(R.id.btn_8);
         btn9 = (Button) findViewById(R.id.btn_9);
         btn0 = (Button) findViewById(R.id.btn_0);
-        btnplus = (Button) findViewById(R.id.btnAdd);
-        btnminus = (Button) findViewById(R.id.btnSub);
-        btnmul = (Button) findViewById(R.id.btnMul);
-        btndiv = (Button) findViewById(R.id.btnDiv);
-        btnequal = (Button) findViewById(R.id.btnEqual);
+
+
+        btnAdd = (Button) findViewById(R.id.btnAdd);
+        btnSub = (Button) findViewById(R.id.btnSub);
+        btnMul = (Button) findViewById(R.id.btnMul);
+        btnDiv = (Button) findViewById(R.id.btnDiv);
+        btnEqual = (Button) findViewById(R.id.btnEqual);
         btnC = (Button) findViewById(R.id.btnClear);
-        btndecimal = (Button) findViewById(R.id.btnDec);
+        btnDec = (Button) findViewById(R.id.btnDec);
+        btnDel= (Button) findViewById(R.id.btnDel);
 
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cal.readData("1", isOperator,isdecimal);
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-            }
-        });
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cal.readData("2", isOperator,isdecimal);
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-            }
-        });
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btn0.setOnClickListener(this);
+        btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
+        btn4.setOnClickListener(this);
+        btn5.setOnClickListener(this);
+        btn6.setOnClickListener(this);
+        btn7.setOnClickListener(this);
+        btn8.setOnClickListener(this);
+        btn9.setOnClickListener(this);
 
-                cal.readData("3", isOperator,isdecimal);
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-            }
-        });
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                cal.readData("4", isOperator,isdecimal);
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-            }
-        });
-        btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        btnAdd.setOnClickListener(this);
+        btnSub.setOnClickListener(this);
+        btnMul.setOnClickListener(this);
+        btnDiv.setOnClickListener(this);
+        btnC.setOnClickListener(this);
+        btnEqual.setOnClickListener(this);
+        btnDec.setOnClickListener(this);
+        btnDel.setOnClickListener(this);
 
-                cal.readData("5", isOperator,isdecimal);
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-            }
-        });
-        btn6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
 
-                cal.readData("6", isOperator,isdecimal);
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-            }
-        });
-        btn7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_0:
+                temp = content.getText().toString();
+                if (!temp.isEmpty()) {
 
-                cal.readData("7", isOperator,isdecimal);
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-            }
-        });
-        btn8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                cal.readData("8", isOperator,isdecimal);
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-            }
-        });
-        btn9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                cal.readData("9", isOperator,isdecimal);
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-            }
-        });
-        btn0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                cal.readData("0", isOperator,isdecimal);
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-            }
-        });
-        btnplus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isdecimal=false;
-                if (isOperator == false) {
-                    isOperator = true;
-                    a = '+';
-                    content.setText("+");
-                } else {
-                    a = '+';
-
-                    cal.setResult(a);
-                    content.setText("+");
+                    if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
+                        content.setText("0");
+                    } else {
+                        content.setText(temp + "0");
+                    }
                 }
 
-            }
-        });
-        btnminus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isdecimal=false;
-                if (isOperator == false) {
-                    isOperator = true;
-                    a = '-';
-                    content.setText("-");
+                break;
+            case R.id.btn_1:
+                temp = content.getText().toString();
+                if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
+                    content.setText("1");
                 } else {
-                    a = '-';
-                    cal.setResult(a);
-
-                    content.setText("-");
+                    content.setText(temp + "1");
                 }
-            }
-        });
-        btnmul.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isdecimal=false;
-                if (isOperator == false) {
-                    isOperator = true;
-                    a = '*';
-                    content.setText("*");
+
+                break;
+
+            case R.id.btn_2:
+                temp = content.getText().toString();
+                if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
+                    content.setText("2");
                 } else {
-                    a = '*';
-                    cal.setResult(a);
-
-                    content.setText("*");
+                    content.setText(temp + "2");
                 }
-            }
-        });
-        btndiv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isdecimal=false;
-                if (isOperator == false) {
-                    isOperator = true;
-                    a = '/';
-                    content.setText("/");
+                break;
+            case R.id.btn_3:
+                temp = content.getText().toString();
+                if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
+                    content.setText("3");
                 } else {
-                    a = '/';
-                    cal.setResult(a);
-
-                    content.setText("/");
+                    content.setText(temp + "3");
                 }
-            }
-        });
-        btnequal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isEqual = true;
-                isOperator = false;
-                isdecimal=false;
-                cal.setResult(a);
+                break;
+            case R.id.btn_4:
+                temp = content.getText().toString();
+                if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
+                    content.setText("4");
+                } else {
+                    content.setText(temp + "4");
+                }
+                break;
+            case R.id.btn_5:
+                temp = content.getText().toString();
+                if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
+                    content.setText("5");
+                } else {
+                    content.setText(temp + "5");
+                }
+                break;
+            case R.id.btn_6:
+                temp = content.getText().toString();
+                if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
+                    content.setText("6");
+                } else {
+                    content.setText(temp + "6");
+                }
+                break;
+            case R.id.btn_7:
+                temp = content.getText().toString();
+                if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
+                    content.setText("7");
+                } else {
+                    content.setText(temp + "7");
+                }
+                break;
+            case R.id.btn_8:
+                temp = content.getText().toString();
+                if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
+                    content.setText("8");
+                } else {
+                    content.setText(temp + "8");
+                }
+                break;
+            case R.id.btn_9:
+                temp = content.getText().toString();
+                if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
+                    content.setText("9");
+                } else {
+                    content.setText(temp + "9");
+                }
+                break;
+            case R.id.btnAdd:
+                temp = content.getText().toString();
+                cal.readData(temp, isOperator);
+                isOperator = true;
+                operator = '+';
+                content.setText("+");
+                break;
+            case R.id.btnSub:
+                temp = content.getText().toString();
+                cal.readData(temp, isOperator);
+                isOperator = true;
+                operator = '-';
+                content.setText("-");
+                break;
+            case R.id.btnMul:
+                temp = content.getText().toString();
+                cal.readData(temp, isOperator);
+                isOperator = true;
+                operator = '*';
+                content.setText("*");
+                break;
+            case R.id.btnDiv:
+                temp = content.getText().toString();
+                cal.readData(temp, isOperator);
+                isOperator = true;
+                operator = '/';
+                content.setText("/");
+                break;
+            case R.id.btnEqual:
+                temp = content.getText().toString();
+                cal.readData(temp, isOperator);
+                cal.setResult(operator);
+                temp = cal.showData();
+                content.setText(temp);
+                break;
+            case R.id.btnDec:
+                temp = content.getText().toString();
+                if (!temp.isEmpty()) {
 
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-                isEqual = false;
-            }
-        });
-        btnC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                isdecimal=false;
-                isOperator=false;
-                isEqual=false;
+                    if (!temp.equals("+") || !temp.equals("-") || !temp.equals("*") || !temp.equals("/")) {
+                        content.setText(temp + ".");
+                    }
+                }
+                break;
+            case R.id.btnDel:
+                temp = content.getText().toString();
+                content.setText(cal.removeLastChar(temp));
+                break;
+            case R.id.btnClear:
                 cal.clear();
-                contentData = cal.showData(isOperator, isEqual);
-                content.setText(contentData);
-            }
-        });
-
-        btndecimal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                cal.readData(".", isOperator,isdecimal);
-                contentData = cal.showData(isOperator, isEqual)+".";
-                isdecimal=true;
-                content.setText(contentData);
-            }
-        });
-
+                content.setText("");
+                isOperator=false;
+                break;
+        }
     }
 }

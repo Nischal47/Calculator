@@ -17,4 +17,5 @@
     <string name="btnPoint">.</string>
     <string name="btnEqual">=</string>
     <string name="btnC">C</string>
+    <string name="btnDel">Del</string>
 </resources>

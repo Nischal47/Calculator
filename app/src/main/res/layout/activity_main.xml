@@ -19,6 +19,7 @@
             android:id="@+id/tvShow"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:gravity="right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/tvtext_size"
@@ -251,9 +252,22 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             >
+            <Button
+                android:id="@+id/btnDel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:background="@android:color/holo_orange_light"
+                android:text="@string/btnDel"
+                android:textSize="@dimen/text_size"
+                />
+
            <Button
                android:id="@+id/btnEqual"
-               android:layout_width="match_parent"
+               android:layout_width="0dp"
+               android:layout_weight="3"
+               android:layout_margin="5dp"
                android:layout_height="match_parent"
                android:text="@string/btnEqual"
                android:textSize="@dimen/text_size"
