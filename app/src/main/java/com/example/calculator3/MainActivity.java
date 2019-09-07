@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public boolean isOperator = false;
     public boolean noRespond = false;
-    public boolean decimal = false;
+    public boolean nodecimal = false;
 
     public String temp;
     public char operator;
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String contentData;
 
     Calculate cal = new Calculate();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,15 +80,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (noRespond == false) {
                     temp = content.getText().toString();
                     if (!temp.isEmpty()) {
-                        if (Double.parseDouble(temp) != 0 || temp.charAt(temp.length() - 1) == '.') {
-                            if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
-                                content.setText("0");
-                            } else {
-                                content.setText(temp + "0");
-                            }
-                        } else {
+
+                        if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
                             content.setText("0");
+                        } else {
+                            content.setText(temp + "0");
                         }
+
                     } else {
                         content.setText("0");
                     }
@@ -189,43 +188,97 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnAdd:
                 temp = content.getText().toString();
-
-                if (!temp.isEmpty()) {
-                    cal.readData(temp, isOperator);
-                    isOperator = true;
+                if (isOperator == true) {
                     operator = '+';
                     content.setText("+");
+                    nodecimal=false;
+                   /* if (!temp.equals("+") || !temp.equals("-") || !temp.equals("*") || !temp.equals("/")){
+                        cal.readData(temp, isOperator);
+                        cal.setResult(operator);
+                    } */
                     noRespond = false;
+                } else {
+                    if (!temp.isEmpty()) {
+                        cal.readData(temp, isOperator);
+                        isOperator = true;
+                        operator = '+';
+                        content.setText("+");
+                        noRespond = false;
+                        nodecimal=false;
+                    }
                 }
+
                 break;
             case R.id.btnSub:
                 temp = content.getText().toString();
-                if (!temp.isEmpty()) {
-                    cal.readData(temp, isOperator);
-                    isOperator = true;
+                if (isOperator == true) {
+
                     operator = '-';
                     content.setText("-");
                     noRespond = false;
+                    nodecimal=false;
+                   /* if (!temp.equals("+") || !temp.equals("-") || !temp.equals("*") || !temp.equals("/")){
+                        cal.readData(temp, isOperator);
+                        cal.setResult(operator);
+                    } */
+
+                } else {
+                    if (!temp.isEmpty()) {
+                        cal.readData(temp, isOperator);
+                        isOperator = true;
+                        operator = '-';
+                        content.setText("-");
+                        noRespond = false;
+                        nodecimal=false;
+                    }
                 }
                 break;
             case R.id.btnMul:
                 temp = content.getText().toString();
-                if (!temp.isEmpty()) {
-                    cal.readData(temp, isOperator);
-                    isOperator = true;
+                if (isOperator == true) {
+
                     operator = '*';
                     content.setText("*");
                     noRespond = false;
+                    nodecimal=false;
+                   /* if (!temp.equals("+") || !temp.equals("-") || !temp.equals("*") || !temp.equals("/")){
+                        cal.readData(temp, isOperator);
+                        cal.setResult(operator);
+                    } */
+
+                } else {
+                    if (!temp.isEmpty()) {
+                        cal.readData(temp, isOperator);
+                        isOperator = true;
+                        operator = '*';
+                        content.setText("*");
+                        noRespond = false;
+                        nodecimal=false;
+                    }
                 }
                 break;
             case R.id.btnDiv:
                 temp = content.getText().toString();
-                if (!temp.isEmpty()) {
-                    cal.readData(temp, isOperator);
-                    isOperator = true;
+                if (isOperator == true) {
+
                     operator = '/';
                     content.setText("/");
                     noRespond = false;
+                    nodecimal=false;
+                    /*if (!temp.equals("+") || !temp.equals("-") || !temp.equals("*") || !temp.equals("/")){
+                        cal.readData(temp, isOperator);
+                        cal.setResult(operator);
+                    }*/
+
+                } else {
+                    if (!temp.isEmpty()) {
+                        cal.readData(temp, isOperator);
+                        isOperator = true;
+                        operator = '/';
+                        content.setText("/");
+                        noRespond = false;
+                        nodecimal=false;
+                    }
                 }
 
                 break;
@@ -238,6 +291,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         temp = cal.showData();
                         content.setText(temp);
                         noRespond = true;
+                        nodecimal=false;
                     }
 
                 }
@@ -246,10 +300,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnDec:
 
                 temp = content.getText().toString();
-                if (!temp.isEmpty()) {
+                if (!temp.isEmpty() && noRespond == false && nodecimal==false) {
 
-                    if (!temp.equals("+") || !temp.equals("-") || !temp.equals("*") || !temp.equals("/")) {
+
+                    if (temp.equals("+") || temp.equals("-") || temp.equals("*") || temp.equals("/")) {
+                        content.setText(".");
+                        nodecimal=true;
+                    }else{
                         content.setText(temp + ".");
+                        nodecimal=true;
                     }
                 }
                 break;
@@ -266,6 +325,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 content.setText("");
                 isOperator = false;
                 noRespond = false;
+                nodecimal=false;
                 break;
         }
     }

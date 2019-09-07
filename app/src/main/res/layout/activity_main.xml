@@ -268,9 +268,10 @@
            <Button
                android:id="@+id/btnEqual"
                android:layout_width="0dp"
-               android:layout_weight="3"
+               android:layout_weight="3.2"
                android:layout_margin="5dp"
                android:layout_height="match_parent"
+
                android:text="@string/btnEqual"
                android:textSize="@dimen/text_size"
                android:background="@color/colorAccent"
